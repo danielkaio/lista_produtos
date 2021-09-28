@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}">
+
 </head>
+
 <body>
     <table>
         <tr>
@@ -14,15 +18,16 @@
         <tr>
             <td>{{usuario.id}}</td>
             <td>{{usuario.nome}}</td>
-      <td><a href="/edit/{{usuario.id}}">edit</a></td>
+            <td><a href="/edit/{{usuario.id}}">edit</a></td>
             <td><a href="/delete/{{usuario.id}}">delete</a></td>
         </tr>
         {%endfor%}
     </table>
-<a href="{{url_for('form')}}">criar</a>
+    <a href="{{url_for('form')}}">criar</a>
 
 
 
 
 </body>
+
 </html>

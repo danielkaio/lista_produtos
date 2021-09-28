@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}">
 </head>
+
 <body>
-  <form action="{{url_for('criar')}}" method="post">
-      <label>nome</label><input type="text" name="nome">
-      <input type="submit"  value="enviar">
-      <input type="reset" value="limpar">
-  </form>
+    <form action="{{url_for('criar')}}" method="post">
+        <label>nome</label><input type="text" name="nome">
+        <input type="submit" value="enviar">
+        <input type="reset" value="limpar">
+    </form>
 
 </body>
+
 </html>
