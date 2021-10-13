@@ -20,8 +20,8 @@
         <tr>
             <td>{{usuario.id}}</td>
             <td>{{usuario.nome}}</td>
-            <td><a href="/edit/{{usuario.id}}">edit</a></td>
-            <td><a href="/delete/{{usuario.id}}">delete</a></td>
+            <td class="edit"><a href="/edit/{{usuario.id}}">edit</a></td>
+            <td class="delete"><a href="/delete/{{usuario.id}}">delete</a></td>
         </tr>
 
         {%endfor%}
@@ -29,10 +29,10 @@
 
 
 
-    <button>
-   
-        <a href="{{url_for('form')}}">criar</a>
-    </button>
+
+
+    <a class="btn" href="{{url_for('form')}}">criar</a>
+
 
 
 

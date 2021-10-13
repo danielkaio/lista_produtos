@@ -23,9 +23,23 @@ a {
     text-decoration: none;
 }
 
-button {
+.btn {
     text-align: center;
     width: 100%;
+    display: block;
     padding: 10px;
     background-color: green;
+}
+
+.edit {
+    background: orange;
+}
+
+.delete {
+    background: crimson;
+}
+
+a {
+    display: block;
+    color: black;
 }
