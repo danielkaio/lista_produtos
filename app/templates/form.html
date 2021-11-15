@@ -11,7 +11,7 @@
     <div class="container">
 
         <form action="{{url_for('criar')}}" method="post">
-            <label>nome</label><input type="text" name="nome">
+            <label>nome</label><input type="text" name="nome" required placeholder="digite um produto" >
             <input type="submit" value="enviar">
             <input type="reset" value="limpar">
         </form>
