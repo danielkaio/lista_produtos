@@ -2,13 +2,13 @@ from flask import Flask, redirect, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:12345678@localhost/compras"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost/compras"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = ["jogo"]
 db = SQLAlchemy(app)
 
 
-class Usuario(db.Model):
+class Produto(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     nome = db.Column(db.String, nullable=False)
 
@@ -18,8 +18,8 @@ class Usuario(db.Model):
 
 @app.route("/")
 def lista():
-    usuario = Usuario.query.all()
-    return render_template("lista.html", usuario=usuario)
+    produto = Produto.query.all()
+    return render_template("lista.html", produto=produto)
 
 
 @app.route("/form")
@@ -31,26 +31,26 @@ def form():
 def criar():
     if request.method == "POST":
         nome = request.form['nome']
-        usuario = Usuario(nome)
-        db.session.add(usuario)
+        produto = Produto(nome)
+        db.session.add(produto)
         db.session.commit()
         return redirect(url_for("lista"))
 
 
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
-    usuario = Usuario.query.get(id)
+    produto = Produto.query.get(id)
     if request.method == "POST":
-        usuario.nome = request.form['nome']
+        produto.nome = request.form['nome']
         db.session.commit()
         return redirect(url_for("lista"))
-    return render_template("edit.html", usuario=usuario)
+    return render_template("edit.html", produto=produto)
 
 
 @app.route("/delete/<int:id>", methods=["GET", "POST"])
 def delete(id):
-    usuario = Usuario.query.get(id)
-    db.session.delete(usuario)
+    produto = Produto.query.get(id)
+    db.session.delete(produto)
     db.session.commit()
     return redirect(url_for("lista"))
 

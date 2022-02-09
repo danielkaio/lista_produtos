@@ -17,12 +17,12 @@
             <th>ação</th>
 
         </tr>
-        {% for usuario in usuario %}
+        {% for produto in produto %}
         <tr>
-            <td>{{usuario.id}}</td>
-            <td>{{usuario.nome}}</td>
-            <td class="edit"><a href="/edit/{{usuario.id}}">edit</a></td>
-            <td class="delete"><a href="/delete/{{usuario.id}}">delete</a></td>
+            <td>{{produto.id}}</td>
+            <td>{{produto.nome}}</td>
+            <td class="edit"><a href="/edit/{{produto.id}}">edit</a></td>
+            <td class="delete"><a href="/delete/{{produto.id}}">delete</a></td>
         </tr>
 
         {%endfor%}
