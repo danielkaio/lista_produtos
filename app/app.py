@@ -1,21 +1,23 @@
 from flask import Flask, redirect, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost/compras"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+mysqlconnector://daniel:Dani1234!@localhost:3306/compras'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 app.secret_key = ["jogo"]
 db = SQLAlchemy(app)
 
 
 class Produto(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    nome = db.Column(db.String, nullable=False)
+    nome = db.Column(db.String(60))
 
     def __init__(self, nome):
         self.nome = nome
 
-
+db.create_all()
+ 
 @app.route("/")
 def lista():
     produto = Produto.query.all()
